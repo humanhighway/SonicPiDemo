@@ -1,9 +1,10 @@
 
 # copy and patse to Sonic Pi IDE
 
-current_sound = 0.3
+current_sound = 0.1
 set_volume! current_sound
 
+#fade in
 in_thread do 
   sleep 1
   loop do
@@ -20,7 +21,6 @@ in_thread do
     sleep 0.4
   end
 end
-
 
 in_thread do
   loop do
@@ -49,5 +49,16 @@ in_thread do
   loop do 
     sample :ambi_choir, rate: 0.2, pan: rrand(0, 2) - 1, amp: 0.33
     sleep 0.5
+  end
+end
+
+# fade out
+in_thread do 
+  sleep 20
+  loop do
+    sleep 0.05
+    current_sound -= 0.01
+    set_volume! current_sound
+    break if current_sound <= 0
   end
 end
