@@ -47,7 +47,7 @@ end
 
 in_thread do
   loop do 
-    sample :ambi_choir, rate: 0.2, pan: rrand(0, 2) - 1
+    sample :ambi_choir, rate: 0.2, pan: rrand(0, 2) - 1, amp: 0.33
     sleep 0.5
   end
 end
